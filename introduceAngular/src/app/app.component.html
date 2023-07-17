@@ -1,3 +1,29 @@
-<h3>{{ title }}</h3> 
-<!-- {{}} işaretleri ile interpolation (string birleştirme) tekniğini kullanarak data-binding yapmış oluyoruz -->
-<p>{{ paragraph }}</p>
+<app-header-menu></app-header-menu>
+<div class="container">
+    <h3>{{ title }}</h3>
+    <!-- {{}} işaretleri ile interpolation (string birleştirme) tekniğini kullanarak data-binding yapmış oluyoruz -->
+    <p>{{ paragraph }} bu yazı, {{ createdDate }} tarihinde yazıldı </p>.
+    <!-- Bu; one-way binding'ditr -->
+    <!-- ngFor gibi yapılar "directive" olarak adlandırılır. -->
+
+    <ul>
+        <li *ngFor="let country of countries">{{ country }}</li>
+
+    </ul>
+    <p>Yapılacak toplam iş sayısı: {{ getItemsCount()  }}</p>
+    <button (click)="filter()" class="btn" [ngClass]="isAllTaskShowing ? 'btn-warning':'btn-success'"  >{{getButtonText()}}</button>
+    <div *ngFor="let todo of todoItems">
+        <div>
+            <input type="checkbox" class="form-check-input" [(ngModel)]="todo.isDone" />{{ todo.task }}
+            <span class="badge rounded-pill" [ngClass]="todo.isDone? 'bg-primary':'bg-danger'">{{ todo.isDone ?
+                'yapıldı':'yapılmadı' }}</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <input type="text" class="form-control" placeholder="Yapılacak işi tanımlayın" #task/>
+            <button (click)="addNewTask(task.value)"  class="btn btn-primary">Yeni Görev ekle</button>
+        </div>
+    </div>
+</div>
