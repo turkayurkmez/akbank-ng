@@ -1,1 +1,5 @@
-<p>task-list works!</p>
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let task of tasks">
+        <input type="checkbox" [checked]="task.isDone" /> {{task.name}} {{task.expectedDate}}
+    </li>
+</ul>
