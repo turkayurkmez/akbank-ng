@@ -9,7 +9,6 @@ import { Project } from '../models/project.model';
 export class ProjectComponent implements OnInit, AfterContentChecked {
 
 
-
   @Input('currentProject') project?: Project;
 
   incompletedTasksCount?: number;
