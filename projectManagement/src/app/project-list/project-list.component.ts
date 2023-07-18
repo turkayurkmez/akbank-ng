@@ -10,6 +10,7 @@ import { projects } from '../models/mocks/projects.mock';
 export class ProjectListComponent implements OnInit {
 
   projects:Project[];
+  searchKey:string;
 
   ngOnInit(): void {
     this.projects = projects;
