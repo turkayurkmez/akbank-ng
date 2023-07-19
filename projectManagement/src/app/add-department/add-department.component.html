@@ -1,0 +1,9 @@
+<form #newDepartment="ngForm" (ngSubmit)="submitForm(newDepartment)">
+    <div class="form-group">
+        <label for="dept">Departman Adı</label>
+        <input #depName="ngModel" [(ngModel)]="department.name" type="text" name="name" id="dept" class="form-control" required minlength="3">
+        <span *ngIf="depName.getError('required') && depName.invalid && depName.dirty " class="alert alert-danger form-control">Departman adını boş bırakmayınız</span>
+        <span *ngIf="depName.getError('minlength') && depName.invalid" class="alert alert-danger form-control">Departman adı en az 3 harf olmalıdır.</span>
+    </div>
+    <button class="btn btn-danger" type="submit">Ekle</button>
+</form>

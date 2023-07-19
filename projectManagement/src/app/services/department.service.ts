@@ -12,13 +12,27 @@ export class DepartmentService {
 
   }
 
-  getDepartments():Observable<Department[]>{
-    return this.httpClient.get<Department[]>('https://localhost:7125/api/Departments')
-                          .pipe(catchError((err:HttpErrorResponse)=>{
-                            console.log(err.message);
-                            return throwError(()=>new Error(err.statusText));
-                          }));
-                           
+  url: string = 'https://localhost:7125/api/Departments';
+
+  getDepartments(): Observable<Department[]> {
+    return this.httpClient.get<Department[]>(this.url)
+      .pipe(catchError((err: HttpErrorResponse) => {
+        console.log(err.message);
+        return throwError(() => new Error(err.statusText));
+      }));
+
+  }
+
+
+  addDepartment(department: Department): Observable<Department>{
+    return this.httpClient.post(this.url,department)
+                          .pipe(catchError((err: HttpErrorResponse) => {
+                                           console.log(err.message);
+                                            return throwError(() => new Error(err.statusText));
+
+                                            
+    })) 
+
   }
 
 
